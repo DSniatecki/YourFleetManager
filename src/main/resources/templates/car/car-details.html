@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Car Details</title>
+    </head>
+    <body>
+        <h1> Your Fleet Manager - Car Details </h1>
+        <hr>
+        <table>
+            <h2> Car Details : </h2>
+            <tr>
+                <td> Brand :</td>
+                <td th:text="${car.getBrand()}"> brand </td>
+            </tr>
+            <tr>
+                <td> Model : </td>
+                <td th:text="${car.getModel()}"> model </td>
+            </tr>
+            <tr>
+                <td> Production year : </td>
+                <td th:text="${car.getProductionYear()}"> production year </td>
+            </tr>
+            <tr>
+                <td> Registration number : </td>
+                <td th:text="${car.getRegistrationNumber()}"> registration number </td>
+            </tr>
+            <h2> Responder Details : </h2>
+            <tr>
+                <td> First name :</td>
+                <td th:text="${car.getVehicleResponder().getFirstName()}"> first name </td>
+            </tr>
+            <tr>
+                <td> Last name :</td>
+                <td th:text="${car.getVehicleResponder().getLastName()}"> last name </td>
+            </tr>
+            <tr>
+                <td> Telephone number :</td>
+                <td th:text="${car.getVehicleResponder().getContactDetails().getTelephoneNumber()}"> first name </td>
+            </tr>
+            <tr>
+                <td> Emails address :</td>
+                <td th:text="${car.getVehicleResponder().getContactDetails().getEmailAddress()}"> email address </td>
+            </tr>
+
+        </table>
+        <hr>
+        <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${car.getDepartment().getId()} + '/car/' +${car.getId()} + '/update'}"><button> Edit </button></a>
+        <a href="#" th:href="@{'/company/'+${companyId}+'/department/'+${car.getDepartment().getId()} + '/car/'}"><button> Return To Car List </button></a>
+    </body>
+</html>

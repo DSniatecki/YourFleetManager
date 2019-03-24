@@ -1,9 +1,6 @@
 package com.dsniatecki.yourfleetmanager.services;
 
-import com.dsniatecki.yourfleetmanager.domains.Company;
 import com.dsniatecki.yourfleetmanager.domains.Department;
-
-import java.util.List;
 
 public interface DepartmentService {
     Department getById(Long id);

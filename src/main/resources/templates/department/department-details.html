@@ -20,10 +20,10 @@
                 <td> Email address :</td>
                 <td th:text="${department.getContactDetails().getEmailAddress()}"> email address </td>
             </tr>
-        
+
         </table>
         <hr>
-        <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/update'}"><button> Update </button></a>
-        <a href="#" th:href="@{'/company/'+${companyId}+'/department'}"><button> Return To Department List </button></a>
+        <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/update'}"><button> Edit </button></a>
+        <a href="#" th:href="@{'/company/'+${companyId}+'/department'}"><button> Return To Car List </button></a>
     </body>
 </html>

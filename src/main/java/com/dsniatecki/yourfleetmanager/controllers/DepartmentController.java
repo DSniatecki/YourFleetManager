@@ -1,7 +1,6 @@
 package com.dsniatecki.yourfleetmanager.controllers;
 
 import com.dsniatecki.yourfleetmanager.domains.Department;
-import com.dsniatecki.yourfleetmanager.services.CompanyService;
 import com.dsniatecki.yourfleetmanager.services.DepartmentService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +10,9 @@ import org.springframework.web.bind.annotation.*;
 class DepartmentController {
 
     private final DepartmentService departmentService;
-    private final CompanyService companyService;
 
-    public DepartmentController(DepartmentService departmentService, CompanyService companyService){
+    public DepartmentController(DepartmentService departmentService){
         this.departmentService = departmentService;
-        this.companyService = companyService;
     }
 
     @GetMapping("/add")
@@ -45,6 +42,12 @@ class DepartmentController {
         return "redirect:/company/{companyId}/department";
     }
 
+    @GetMapping("/{id}/car")
+    public String showCars(@PathVariable String companyId, @PathVariable String id, Model model){
+        model.addAttribute("department", departmentService.getById(Long.valueOf(id)));
+        model.addAttribute("companyId", Long.valueOf(companyId));
+        return "department/department-car-list";
+    }
 
 
 }

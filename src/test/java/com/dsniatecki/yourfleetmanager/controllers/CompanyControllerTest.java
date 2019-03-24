@@ -2,7 +2,6 @@ package com.dsniatecki.yourfleetmanager.controllers;
 
 
 import com.dsniatecki.yourfleetmanager.domains.Company;
-import com.dsniatecki.yourfleetmanager.exceptions.NotFoundException;
 import com.dsniatecki.yourfleetmanager.services.CompanyService;
 import org.junit.Before;
 import org.junit.Test;

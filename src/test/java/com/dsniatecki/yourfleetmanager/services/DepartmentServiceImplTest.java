@@ -13,7 +13,8 @@ import org.mockito.MockitoAnnotations;
 import java.util.Optional;
 
 import static junit.framework.TestCase.assertNotNull;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 

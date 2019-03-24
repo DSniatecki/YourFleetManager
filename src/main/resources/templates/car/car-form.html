@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Car Form</title>
+</head>
+    <body>
+        <h1> Your Fleet Manager - Car Form </h1>
+        <hr>
+        <form th:object="${car}" th:action="@{'/company/'+${companyId}+'/department/'+${departmentId} + '/car/save'}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <input type="hidden" th:field="*{vehicleResponder.id}"/>
+            <input type="hidden" th:field="*{vehicleResponder.contactDetails.id}"/>
+            <h2> Car Details : </h2>
+            <p> brand :
+                <input type="text" th:field="*{brand}"/>
+            </p>
+            <p> model :
+                <input type="text" th:field="*{model}"/>
+            </p>
+
+            <p> Production Year :
+                <input type="text" th:field="*{productionYear}"/>
+            </p>
+
+            <p> Registration Number :
+                <input type="text" th:field="*{registrationNumber}"/>
+            </p>
+
+            <h2> Vehicle Responder : </h2>
+            <p> telephone number :
+                <input type="text" th:field="*{vehicleResponder.firstName}"/>
+            </p>
+
+            <p> email address:
+                <input type="text" th:field="*{vehicleResponder.lastName}"/>
+            </p>
+
+            <h2> Responder Contact Details : </h2>
+            <p> first name :
+                <input type="text" th:field="*{vehicleResponder.contactDetails.telephoneNumber}"/>
+            </p>
+
+            <p> last name :
+                <input type="text" th:field="*{vehicleResponder.contactDetails.emailAddress}"/>
+            </p>
+
+
+            <hr>
+            <button type="submit">Submit</button>
+            <a href="#" th:href="@{'/company/'+${companyId}+'/department/'+${departmentId}+'/car'}"><button>Return</button></a>
+        </form>
+
+    </body>
+</html>

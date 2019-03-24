@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Department Car List</title>
+</head>
+<body>
+<h1> Your Fleet Manager - Department Car List </h1>
+<hr>
+<h3 th:inline="text" >
+    department name : <small th:text="${department.getName()}">company name</small>
+</h3>
+<hr>
+<a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/car/add'}"><button> Add New Car </button></a>
+<a href="#" th:href="@{'/company/'+${companyId} + '/department'}"><button> Return to Department List </button></a>
+<hr>
+<table>
+    <tr>
+        <th> Number </th>
+        <th> Brand </th>
+        <th> Model </th>
+        <th> Production Year </th>
+        <th> Registration Number </th>
+    </tr>
+    <tr th:each=" car, iter:${department.getCars()}">
+        <td th:text="${iter.index + 1}"> number </td>
+        <td th:text="${car.getBrand()}"> brand </td>
+        <td th:text="${car.getModel()}"> model </td>
+        <td th:text="${car.getProductionYear()}"> production year </td>
+        <td th:text="${car.getRegistrationNumber()}"> registration number </td>
+
+        <td>
+            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/car/' + ${car.getId()} + '/details'}"><button> Details </button></a>
+
+            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/car/' + ${car.getId()} + '/delete'}"
+               th:onclick="return confirm('Are you sure you want to delete this department')?true:false;"><button> Delete </button></a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -2,7 +2,6 @@ package com.dsniatecki.yourfleetmanager.controllers;
 
 
 import com.dsniatecki.yourfleetmanager.domains.Department;
-import com.dsniatecki.yourfleetmanager.services.CompanyService;
 import com.dsniatecki.yourfleetmanager.services.DepartmentService;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,16 +26,13 @@ public class DepartmentControllerTest {
     @Mock
     DepartmentService departmentService;
 
-    @Mock
-    CompanyService companyService;
-
     MockMvc mockMvc;
 
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        departmentController = new DepartmentController(departmentService, companyService);
+        departmentController = new DepartmentController(departmentService);
         mockMvc = MockMvcBuilders.standaloneSetup(departmentController).build();
     }
 
