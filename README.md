@@ -2,7 +2,7 @@
 Web CRUD Application designed to manage a fleet of vehicles.
 
 ## technology used :
- #- Backend :
+ # - Backend :
      - Spring Boot
      - Spring Data JPA
      - JPA & Hibernate
@@ -11,7 +11,7 @@ Web CRUD Application designed to manage a fleet of vehicles.
      - Mockito
      - Lombok
  
- #- Frontend : 
+ # - Frontend : 
      - HTML
      - Boostrap CSS
      
