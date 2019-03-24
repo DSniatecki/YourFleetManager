@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Company Form</title>
+    </head>
+    <body>
+        <h1> Your Fleet Manager - Company Form </h1>
+        <hr>
+        <form th:object="${company}" th:action="@{/company/save}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+                <input type="hidden" th:field="*{address.id}"/>
+                <input type="hidden" th:filed="*{contactDetails.id}"/>
+                <p> name :
+                    <input type="text" th:field="*{name}"/>
+                </p>
+            <h2> Contact Details : </h2>
+                <p> telephone number :
+                    <input type="text" th:field="*{contactDetails.telephoneNumber}"/>
+                </p>
+
+                <p> email address:
+                    <input type="text" th:field="*{contactDetails.emailAddress}"/>
+                </p>
+
+            <h2> Address : </h2>
+                <p> street :
+                    <input type="text" th:field="*{address.street}"/>
+                </p>
+                <p> building number :
+                    <input type="text" th:field="*{address.buildingNumber}"/>
+                </p>
+                <p> city :
+                    <input type="text" th:field="*{address.city}"/>
+                </p>
+                <p> zip Code :
+                    <input type="text" th:field="*{address.zipCode}"/>
+                </p>
+                <p> country :
+                    <input type="text" th:field="*{address.country}"/>
+                </p>
+
+            <hr>
+                <button type="submit">Submit</button>
+        </form>
+        <a href="#" th:href="@{'/company/'}"><button>Return</button></a>
+    </body>
+</html>

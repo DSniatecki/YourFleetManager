@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Company Details</title>
+
+    </head>
+    <body>
+        <h1> Your Fleet Manager - Company Details </h1>
+        <hr>
+        <table>
+            <tr>
+                <td> name :</td>
+                <td th:text="${company.getName()}"> name </td>
+            </tr>
+
+        </table>
+        <h2> Contact Details : </h2>
+        <table>
+            <tr>
+                <td> Telephone number :</td>
+                <td th:text="${company.getContactDetails().getTelephoneNumber() }"> telephone number </td>
+            </tr>
+            <tr>
+                <td> Email address :</td>
+                <td th:text="${company.getContactDetails().getEmailAddress()}"> email address </td>
+            </tr>
+
+        </table>
+        <h2>Address : </h2>
+        <table>
+            <tr>
+                <td> Street :</td>
+                <td th:text="${company.getAddress().getStreet()}"> street </td>
+            </tr>
+            <tr>
+                <td> House number :</td>
+                <td th:text="${company.getAddress().getBuildingNumber()}"> building number </td>
+            </tr>
+            <tr>
+                <td> City :</td>
+                <td th:text="${company.getAddress().getCity()}"> city </td>
+            </tr>
+            <tr>
+                <td> Zip Code :</td>
+                <td th:text="${company.getAddress().getZipCode()}"> zip code </td>
+            </tr>
+            <tr>
+                <td> Country :</td>
+                <td th:text="${company.getAddress().getCountry()}"> country </td>
+            </tr>
+        </table>
+        <hr>
+        <a href="#" th:href="@{'/company/' + ${company.getId()} + '/update'}"><button> Edit </button></a>
+        <a href="#" th:href="@{'/company/'}"><button> Return </button></a>
+    </body>
+</html>
