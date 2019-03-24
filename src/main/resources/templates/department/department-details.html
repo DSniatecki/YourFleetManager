@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Department Details</title>
+    </head>
+    <body>
+        <h1> Your Fleet Manager - Department Details </h1>
+        <hr>
+        <table>
+            <tr>
+                <td> name :</td>
+                <td th:text="${department.getName()}"> name </td>
+            </tr>
+            <tr>
+                <td> Telephone number :</td>
+                <td th:text="${department.getContactDetails().getTelephoneNumber() }"> telephone number </td>
+            </tr>
+            <tr>
+                <td> Email address :</td>
+                <td th:text="${department.getContactDetails().getEmailAddress()}"> email address </td>
+            </tr>
+        
+        </table>
+        <hr>
+        <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/update'}"><button> Update </button></a>
+        <a href="#" th:href="@{'/company/'+${companyId}+'/department'}"><button> Return To Department List </button></a>
+    </body>
+</html>

@@ -14,7 +14,7 @@ class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
 
-    CompanyServiceImpl(CompanyRepository companyRepository){
+    public CompanyServiceImpl(CompanyRepository companyRepository){
         this.companyRepository = companyRepository;
     }
 

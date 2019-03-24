@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Department Form</title>
+    </head>
+    <body>
+        <h1> Your Fleet Manager - Department Form </h1>
+        <hr>
+        <form th:object="${department}" th:action="@{'/company/'+${companyId}+'/department/save'}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+                <input type="hidden" th:field="*{contactDetails.id}"/>
+                <p> name :
+                    <input type="text" th:field="*{name}"/>
+                </p>
+                <p> telephone number :
+                    <input type="text" th:field="*{contactDetails.telephoneNumber}"/>
+                </p>
+
+                <p> email address:
+                    <input type="text" th:field="*{contactDetails.emailAddress}"/>
+                </p>
+
+            <hr>
+                <button type="submit">Submit</button>
+            <a href="#" th:href="@{'/company/'+${companyId}+'/department/save'}"><button>Return</button></a>
+        </form>
+
+    </body>
+</html>

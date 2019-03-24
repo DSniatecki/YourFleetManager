@@ -45,13 +45,13 @@ public class CompanyServiceImplTest {
     }
 
     @Test(expected = NotFoundException.class)
-    public void testGetByIdNotFound(){
+    public void testGetByIdNotFound() throws Exception{
         when(companyRepository.findById(anyLong())).thenThrow(NotFoundException.class);
         Company returnedCompany = companyService.getById(anyLong());
     }
 
     @Test
-    public void testFindAll(){
+    public void testFindAll() throws Exception{
         Company company1 = new Company();
         Company company2 = new Company();
         when(companyRepository.findAll()).thenReturn(Arrays.asList(company1, company2));
@@ -62,7 +62,7 @@ public class CompanyServiceImplTest {
     }
 
     @Test
-    public void testSave(){
+    public void testSave() throws Exception{
         Company company = new Company();
         when(companyRepository.save(any())).thenReturn(company);
         Company savedCompany = companyService.save(company);
@@ -70,7 +70,7 @@ public class CompanyServiceImplTest {
     }
 
     @Test(expected = NotFoundException.class)
-    public void testDeleteByIdNotFound(){
+    public void testDeleteByIdNotFound() throws Exception{
         doThrow(IllegalArgumentException.class).when(companyRepository).deleteById(anyLong());
         companyService.deleteById(anyLong());
     }

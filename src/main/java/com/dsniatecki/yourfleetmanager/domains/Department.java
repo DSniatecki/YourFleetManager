@@ -22,11 +22,11 @@ public class Department {
     private String name;
 
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="contact_details_id")
     private ContactDetails contactDetails;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="company_id")
     private Company company;
 
@@ -39,7 +39,9 @@ public class Department {
         this.cars.add(car);
     }
 
-    public Department() { }
+    public Department() {
+        this.contactDetails = new ContactDetails();
+    }
 
     public Department(String name, ContactDetails contactDetails) {
         this.name = name;

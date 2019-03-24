@@ -22,11 +22,6 @@ class CompanyController {
         return "company/company-list";
     }
 
-    @GetMapping("/add")
-    public String addNew(Model model){
-        model.addAttribute("company", new Company());
-        return "company/company-form";
-    }
 
     @GetMapping("/{id}/details")
     public String showDetails(@PathVariable String id, Model model){
@@ -34,6 +29,17 @@ class CompanyController {
         return "company/company-details";
     }
 
+    @GetMapping("/{id}/department")
+    public String showCompanyDepartmentList(@PathVariable String id, Model model){
+        model.addAttribute("company", companyService.getById(Long.valueOf(id)));
+        return "company/company-department-list";
+    }
+
+    @GetMapping("/add")
+    public String addNew(Model model){
+        model.addAttribute("company", new Company());
+        return "company/company-form";
+    }
 
 
     @GetMapping("/{id}/delete")
@@ -49,7 +55,7 @@ class CompanyController {
     }
 
     @PostMapping("/save")
-    public String update(@ModelAttribute Company company, Model model){
+    public String save(@ModelAttribute Company company, Model model){
         model.addAttribute("company", companyService.save(company));
         return "company/company-details";
     }
