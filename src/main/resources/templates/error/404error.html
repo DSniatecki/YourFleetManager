@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>404</title>
-    </head>
-    <body>
-        <h2> 404 - NOT FOUND </h2>
-        <hr>
-        <td th:text="${exceptionMessage}"> exception message </td>
-    </body>
+<head>
+    <title>404</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+<div class="container-fluid">
+
+    <h2 class="text-center text-danger"> 404 - NOT FOUND  </h2>
+    <hr>
+    <p class="text-center text-danger" th:text="${exceptionMessage}"> exception message </p>
+</div>
+</body>
 </html>

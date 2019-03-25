@@ -25,7 +25,7 @@ public class Company {
     @JoinColumn(name="contact_details_id")
     private ContactDetails contactDetails;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="address_id")
     private Address address;
 

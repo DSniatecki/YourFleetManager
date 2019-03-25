@@ -3,53 +3,72 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Car Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-    <body>
-        <h1> Your Fleet Manager - Car Form </h1>
-        <hr>
-        <form th:object="${car}" th:action="@{'/company/'+${companyId}+'/department/'+${departmentId} + '/car/save'}" method="post">
-            <input type="hidden" th:field="*{id}"/>
-            <input type="hidden" th:field="*{vehicleResponder.id}"/>
-            <input type="hidden" th:field="*{vehicleResponder.contactDetails.id}"/>
-            <h2> Car Details : </h2>
-            <p> brand :
-                <input type="text" th:field="*{brand}"/>
-            </p>
-            <p> model :
-                <input type="text" th:field="*{model}"/>
-            </p>
-
-            <p> Production Year :
-                <input type="text" th:field="*{productionYear}"/>
-            </p>
-
-            <p> Registration Number :
-                <input type="text" th:field="*{registrationNumber}"/>
-            </p>
-
-            <h2> Vehicle Responder : </h2>
-            <p> telephone number :
-                <input type="text" th:field="*{vehicleResponder.firstName}"/>
-            </p>
-
-            <p> email address:
-                <input type="text" th:field="*{vehicleResponder.lastName}"/>
-            </p>
-
-            <h2> Responder Contact Details : </h2>
-            <p> first name :
-                <input type="text" th:field="*{vehicleResponder.contactDetails.telephoneNumber}"/>
-            </p>
-
-            <p> last name :
-                <input type="text" th:field="*{vehicleResponder.contactDetails.emailAddress}"/>
-            </p>
-
-
+    <body class="bg-dark">
+        <div class="container-fluid">
+            <h1 class="text-light text-center" > Your Fleet Manager - Car Form </h1>
             <hr>
-            <button type="submit">Submit</button>
-            <a href="#" th:href="@{'/company/'+${companyId}+'/department/'+${departmentId}+'/car'}"><button>Return</button></a>
-        </form>
+            <form th:object="${car}" th:action="@{'/company/'+${companyId}+'/department/'+${departmentId} + '/car/save'}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+                <input type="hidden" th:field="*{vehicleResponder.id}"/>
+                <input type="hidden" th:field="*{vehicleResponder.contactDetails.id}"/>
 
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <th> Car Details :</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Brand </td>>
+                            <td> <input type="text" th:field="*{brand}"/> </td>
+                        </tr>
+                        <tr>
+                            <td> Model </td>>
+                            <td> <input type="text" th:field="*{model}"/> </td>
+                        </tr>
+                        <tr>
+                            <td> Production year </td>>
+                            <td> <input type="text" th:field="*{productionYear}"/> </td>
+                        </tr>
+                        <tr>
+                            <td> Registration number </td>
+                            <td> <input type="text" th:field="*{registrationNumber}"/> </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                         <th> Responder Details : </th>
+                    </thead>
+
+                        <tr>
+                            <td> Responder first name </td>>
+                            <td> <input type="text" th:field="*{vehicleResponder.firstName}"/> </td>
+                        </tr>
+                        <tr>
+                            <td> Responder last name </td>>
+                            <td>  <input type="text" th:field="*{vehicleResponder.lastName}"/> </td>
+                        </tr>
+                        <tr>
+                            <td> Responder telephone number </td>>
+                            <td> <input type="text" th:field="*{vehicleResponder.contactDetails.telephoneNumber}"/> </td>
+                        </tr>
+                        <tr>
+                            <td> Responder email addres  </td>>
+                            <td>  <input type="text" th:field="*{vehicleResponder.contactDetails.emailAddress}"/> </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <hr>
+                <button type="submit" class="btn btn-success"> Submit </button>
+                <a href="#" th:href="@{'/company/'+${companyId}+'/department/'+${departmentId}+'/car'}"><button type="button" class="btn btn-light"> Return </button></a>
+            </form>
+        </div>
     </body>
 </html>
