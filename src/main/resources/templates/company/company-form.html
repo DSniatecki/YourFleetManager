@@ -8,7 +8,11 @@
     </head>
     <body class="bg-dark">
         <div class="container-fluid">
-            <h1 class="text-light text-center" > Your Fleet Manager - Company Form </h1>
+            <h1 class="text-light text-center" >
+                <img th:src="@{/images/company-logo.png}" width="40" height="40"/>
+                Your Fleet Manager - Company Form
+                <img th:src="@{/images/company-logo.png}" width="40" height="40"/>
+            </h1>
             <hr>
             <form th:object="${company}" th:action="@{/company/save}" method="post">
                     <input type="hidden" th:field="*{id}"/>

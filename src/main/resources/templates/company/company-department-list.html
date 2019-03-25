@@ -8,7 +8,11 @@
     </head>
     <body class="bg-dark">
         <div class="container-fluid">
-            <h1 class="text-light text-center" > Your Fleet Manager - Company Department List </h1>
+            <h1 class="text-light text-center" >
+                <img th:src="@{/images/department-logo.png}" width="40" height="40"/>
+                Your Fleet Manager - Company Department List
+                <img th:src="@{/images/department-logo.png}" width="40" height="40"/>
+            </h1>
             <hr>
             <h3 class="text-warning text-center" th:text="' - ' + ${company.getName()} + ' - '" > - company name - </h3>
             <hr>
@@ -18,6 +22,7 @@
             <table class="table table-striped table-dark">
                 <thead>
                     <tr>
+                        <th scope="col"></th>
                         <th scope="col"> Number </th>
                         <th scope="col"> Name </th>
                         <th scope="col"> Telephone Number </th>
@@ -27,6 +32,9 @@
                 </thead>
                 <tbody>
                     <tr th:each="department, iter:${company.getDepartments()}">
+                        <td>
+                            <img th:src="@{/images/department-logo.png}"  width="40" height="40"/>
+                        </td>
                         <td th:text="${iter.index + 1}"> number </td>
                         <td th:text="${department.getName()}"> name </td>
                         <td th:text="${department.getContactDetails().getTelephoneNumber()}"> telephone number</td>
