@@ -48,4 +48,16 @@ class CompanyServiceImpl implements CompanyService {
             throw new NotFoundException("Company[ id: " + id + " ] was not found .");
         }
     }
+
+    //---------------------------------------------------------------------------------------------
+
+
+    @Override
+    public List<Company> getAllBy(String parameter ) {
+        List<Company> companies = new ArrayList<>();
+        companyRepository.findAll().iterator().forEachRemaining(companies::add);
+        return companies;
+    }
+
+
 }

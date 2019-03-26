@@ -38,8 +38,8 @@
                         <td th:text="${company.getAddress().getCountry()}"> country </td>
                         <td th:text="${company.getAddress().getCity()}"> city </td>
                         <td>
-                            <a href="#" th:href="@{'/company/'+${company.getId()}+'/department'}"><button type="button" class="btn btn-primary"> Department List </button></a>
-                            <a href="#" th:href="@{'/company/'+${company.getId()}+'/details'}"><button type="button" class="btn btn-info"> Details </button></a>
+                            <a href="#" th:href="@{'/company/'+${company.getId()}+'/department'}"><button type="button" class="btn btn-primary"> Show Department List </button></a>
+                            <a href="#" th:href="@{'/company/'+${company.getId()}+'/details'}"><button type="button" class="btn btn-info"> Show Details </button></a>
                             <a href="#" th:href="@{'/company/'+${company.getId()}+'/delete'}" th:onclick="return confirm('Are you sure you want to delete this company')?true:false;"><button type="button" class="btn btn-danger"> Delete </button></a>
                         </td>
                     </tr>
