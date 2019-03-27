@@ -3,9 +3,11 @@ package com.dsniatecki.yourfleetmanager.services;
 import com.dsniatecki.yourfleetmanager.domains.Company;
 import com.dsniatecki.yourfleetmanager.exceptions.NotFoundException;
 import com.dsniatecki.yourfleetmanager.repositories.CompanyRepository;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,10 @@ class CompanyServiceImpl implements CompanyService {
         this.companyRepository = companyRepository;
     }
 
+    @Override
+    public Page<Company> getAllPageable(Pageable pageable) {
+        return companyRepository.findAll(pageable);
+    }
 
     @Override
     public List<Company> getAll() {
@@ -48,16 +54,5 @@ class CompanyServiceImpl implements CompanyService {
             throw new NotFoundException("Company[ id: " + id + " ] was not found .");
         }
     }
-
-    //---------------------------------------------------------------------------------------------
-
-
-    @Override
-    public List<Company> getAllBy(String parameter ) {
-        List<Company> companies = new ArrayList<>();
-        companyRepository.findAll().iterator().forEachRemaining(companies::add);
-        return companies;
-    }
-
 
 }

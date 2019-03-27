@@ -41,7 +41,7 @@
                         <td th:text="${department.getContactDetails().getEmailAddress()}"> email address </td>
                         <td>
                             <a href="#" th:href="@{'/company/'+${company.getId()} + '/department/'+${department.getId()} + '/car'}"><button type="button" class="btn btn-primary" > Show Car List </button></a>
-                            <a href="#" th:href="@{'/company/'+${company.getId()} + '/department/'+${department.getId()} + '/update'}"><button type="button" class="btn btn-warning"> Update </button></a>
+                            <a href="#" th:href="@{'/company/'+${company.getId()} + '/department/'+${department.getId()} + '/update'}"><button type="button" class="btn btn-warning"> Edit </button></a>
                             <a href="#" th:href="@{'/company/'+${company.getId()} + '/department/'+${department.getId()} + '/delete'}"
                                th:onclick="return confirm('Are you sure you want to delete this department')?true:false;"><button type="button" class="btn btn-danger"> Delete </button></a>
                         </td>

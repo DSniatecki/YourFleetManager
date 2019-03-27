@@ -1,5 +1,6 @@
 package com.dsniatecki.yourfleetmanager.domains;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
