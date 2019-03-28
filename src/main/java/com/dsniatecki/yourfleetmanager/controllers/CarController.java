@@ -1,6 +1,6 @@
 package com.dsniatecki.yourfleetmanager.controllers;
 
-import com.dsniatecki.yourfleetmanager.domains.Car;
+import com.dsniatecki.yourfleetmanager.dto.CarDTO;
 import com.dsniatecki.yourfleetmanager.services.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +31,7 @@ class CarController {
 
     @GetMapping("/add")
     public String add(@PathVariable String companyId, @PathVariable String departmentId, Model model){
-        model.addAttribute("car", new Car());
+        model.addAttribute("car", new CarDTO());
         model.addAttribute("departmentId", Long.valueOf(departmentId));
         model.addAttribute("companyId", Long.valueOf(companyId));
         return "car/car-form";
@@ -47,8 +47,8 @@ class CarController {
 
     @PostMapping("/save")
     public String save(@PathVariable String companyId, @PathVariable String departmentId,
-                       @ModelAttribute Car car, Model model){
-        model.addAttribute("car", carService.saveWithDepartment(car, Long.valueOf(departmentId)));
+                       @ModelAttribute CarDTO carDTO, Model model){
+        model.addAttribute("car", carService.saveWithDepartment(carDTO, Long.valueOf(departmentId)));
         model.addAttribute("companyId", Long.valueOf(companyId));
         return "car/car-details";
     }

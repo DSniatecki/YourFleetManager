@@ -2,6 +2,7 @@ package com.dsniatecki.yourfleetmanager.services;
 
 import com.dsniatecki.yourfleetmanager.domains.Company;
 import com.dsniatecki.yourfleetmanager.domains.Department;
+import com.dsniatecki.yourfleetmanager.dto.DepartmentDTO;
 import com.dsniatecki.yourfleetmanager.exceptions.NotFoundException;
 import com.dsniatecki.yourfleetmanager.repositories.CompanyRepository;
 import com.dsniatecki.yourfleetmanager.repositories.DepartmentRepository;
@@ -9,6 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 
 import java.util.Optional;
 
@@ -28,38 +31,50 @@ public class DepartmentServiceImplTest {
     @Mock
     CompanyRepository companyRepository;
 
+    private ModelMapper modelMapper;
+
     @Before
     public void setUp() throws Exception{
         MockitoAnnotations.initMocks(this);
         departmentService = new DepartmentServiceImpl(departmentRepository, companyRepository);
+
+        modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
     }
 
     @Test
     public void testGetByIdSuccess() throws Exception{
         Department department = new Department();
+        department.setId(5673L);
         when(departmentRepository.findById(anyLong())).thenReturn(Optional.of(department));
-        Department returnedDepartment = departmentService.getById(anyLong());
 
-        assertNotNull(returnedDepartment);
-        assertSame(returnedDepartment, department);
+        DepartmentDTO returnedDepartmentDTO = departmentService.getById(anyLong());
+
+        assertNotNull(returnedDepartmentDTO);
+        assertSame(returnedDepartmentDTO.getId(), department.getId());
         verify(departmentRepository, times(1)).findById(anyLong());
     }
 
     @Test(expected = NotFoundException.class)
     public void testGetByIdNotFound() throws Exception{
         when(departmentRepository.findById(anyLong())).thenThrow(NotFoundException.class);
-        Department returnedDepartment = departmentService.getById(anyLong());
+        DepartmentDTO returnedDepartmentDTO = departmentService.getById(anyLong());
     }
 
 
     @Test
     public void testSave() throws Exception{
         Department department = new Department();
+        department.setId(5673L);
         Company company = new Company();
+        company.setId(8888L);
         when(companyRepository.findById(anyLong())).thenReturn(Optional.of(company));
         when(departmentRepository.save(any())).thenReturn(department);
-        Department savedDepartment = departmentService.save(department, 1L);
-        assertEquals(department, savedDepartment);
+
+        DepartmentDTO departmentDTO = modelMapper.map(department, DepartmentDTO.class);
+        DepartmentDTO savedDepartmentDTO = departmentService.save(departmentDTO, anyLong());
+
+        assertEquals(department.getId(), savedDepartmentDTO.getId());
     }
 
     @Test(expected = NotFoundException.class)

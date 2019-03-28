@@ -1,9 +1,9 @@
 package com.dsniatecki.yourfleetmanager.services;
 
-import com.dsniatecki.yourfleetmanager.domains.Department;
+import com.dsniatecki.yourfleetmanager.dto.DepartmentDTO;
 
 public interface DepartmentService {
-    Department getById(Long id);
-    Department save(Department Department, Long companyId);
+    DepartmentDTO getById(Long id);
+    DepartmentDTO save(DepartmentDTO departmentDTO, Long companyId);
     void deleteById(Long id);
 }

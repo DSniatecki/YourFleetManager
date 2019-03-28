@@ -1,7 +1,7 @@
 package com.dsniatecki.yourfleetmanager.controllers;
 
 
-import com.dsniatecki.yourfleetmanager.domains.Department;
+import com.dsniatecki.yourfleetmanager.dto.DepartmentDTO;
 import com.dsniatecki.yourfleetmanager.services.DepartmentService;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,12 +21,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class DepartmentControllerTest {
 
-    DepartmentController departmentController;
+    private DepartmentController departmentController;
 
     @Mock
     DepartmentService departmentService;
 
-    MockMvc mockMvc;
+    private  MockMvc mockMvc;
 
 
     @Before
@@ -46,9 +46,9 @@ public class DepartmentControllerTest {
 
     @Test
     public void testUpdate() throws  Exception{
-        Department department = new Department();
-        department.setId(1L);
-        when(departmentService.getById(anyLong())).thenReturn(department);
+        DepartmentDTO departmentDTO = new DepartmentDTO();
+        departmentDTO.setId(1L);
+        when(departmentService.getById(anyLong())).thenReturn(departmentDTO);
 
         mockMvc.perform(get("/company/{companyId}/department/{departmentId}/update", 1L , 1L ))
                 .andExpect( status().isOk())
@@ -60,10 +60,10 @@ public class DepartmentControllerTest {
 
     @Test
     public void testSave() throws  Exception {
-        Department department = new Department();
-        department.setId(1L);
+        DepartmentDTO departmentDTO = new DepartmentDTO();
+        departmentDTO.setId(1L);
 
-        when(departmentService.save(any(), anyLong())).thenReturn(department);
+        when(departmentService.save(any(), anyLong())).thenReturn(departmentDTO);
 
         mockMvc.perform(post("/company/{companyId}/department/save", 1L)
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)

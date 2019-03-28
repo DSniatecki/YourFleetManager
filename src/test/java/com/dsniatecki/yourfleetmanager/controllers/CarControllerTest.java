@@ -1,6 +1,6 @@
 package com.dsniatecki.yourfleetmanager.controllers;
 
-import com.dsniatecki.yourfleetmanager.domains.Car;
+import com.dsniatecki.yourfleetmanager.dto.CarDTO;
 import com.dsniatecki.yourfleetmanager.services.CarService;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,12 +18,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class CarControllerTest {
 
-    CarController carController;
+    private CarController carController;
 
     @Mock
     CarService carService;
 
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Before
     public void setUp() throws Exception {
@@ -34,8 +34,8 @@ public class CarControllerTest {
 
     @Test
     public void testShowDetails() throws  Exception{
-        Car car = new Car();
-        when(carService.getById(anyLong())).thenReturn(car);
+        CarDTO carDTO = new CarDTO();
+        when(carService.getById(anyLong())).thenReturn(carDTO);
 
         mockMvc.perform(get("/company/{companyId}/department/{departmentId}/car/{carId}/details", 1L, 1L, 1L))
                 .andExpect( status().isOk())
@@ -65,9 +65,9 @@ public class CarControllerTest {
 
     @Test
     public void testSave() throws  Exception{
-        Car car = new Car();
-        car.setId(1L);
-        when(carService.saveWithDepartment(any(), anyLong())).thenReturn(car);
+        CarDTO carDTO = new CarDTO();
+        carDTO.setId(1L);
+        when(carService.saveWithDepartment(any(), anyLong())).thenReturn(carDTO);
 
         mockMvc.perform(post("/company/{companyId}/department/{departmentId}/car/save", 1L, 1L)
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
@@ -83,8 +83,8 @@ public class CarControllerTest {
 
     @Test
     public void testUpdate() throws  Exception{
-        Car car = new Car();
-        when(carService.getById(anyLong())).thenReturn(car);
+        CarDTO carDTO = new CarDTO();
+        when(carService.getById(anyLong())).thenReturn(carDTO);
 
         mockMvc.perform(get("/company/{companyId}/department/{departmentId}/car/{carId}/update", 1L, 1L, 1L))
                 .andExpect( status().isOk())

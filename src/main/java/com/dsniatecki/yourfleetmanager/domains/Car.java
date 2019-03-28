@@ -1,6 +1,5 @@
 package com.dsniatecki.yourfleetmanager.domains;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,7 +37,9 @@ public class Car {
     @JoinColumn(name="vehicle_responder_id")
     private VehicleResponder vehicleResponder;
 
-    public Car() { }
+    public Car() {
+        this.vehicleResponder = new VehicleResponder();
+    }
 
     public Car(String brand, String model, int productionYear, String registrationNumber, VehicleResponder vehicleResponder) {
         this.brand = brand;

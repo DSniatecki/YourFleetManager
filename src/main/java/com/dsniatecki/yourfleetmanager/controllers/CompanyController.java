@@ -1,6 +1,7 @@
 package com.dsniatecki.yourfleetmanager.controllers;
 
 import com.dsniatecki.yourfleetmanager.domains.Company;
+import com.dsniatecki.yourfleetmanager.dto.CompanyDTO;
 import com.dsniatecki.yourfleetmanager.services.CompanyService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -28,9 +29,9 @@ class CompanyController {
     }
 
     @GetMapping({"/","/list"})
-    public String showAll(@RequestParam("page") Optional<Integer> page, Model model ){
+    public String showListWithPagination(@RequestParam("page") Optional<Integer> page, Model model ){
         int currentPage = page.orElse(1);
-        Page<Company> companyPage = companyService.getAllPageable(PageRequest.of(currentPage - 1, PAGE_SIZE));
+        Page<CompanyDTO> companyPage = companyService.getAllPageable(PageRequest.of(currentPage - 1, PAGE_SIZE));
         int totalPages = companyPage.getTotalPages();
         model.addAttribute("companiesPage", companyPage);
 
@@ -84,8 +85,8 @@ class CompanyController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Company company, Model model){
-        model.addAttribute("company", companyService.save(company));
+    public String save(@ModelAttribute CompanyDTO companyDTO, Model model){
+        model.addAttribute("company", companyService.save(companyDTO));
         return "company/company-details";
     }
 }
