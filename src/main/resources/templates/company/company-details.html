@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Company Details</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body class="bg-dark">
+        <div class="container-fluid">
+            <h1 class="text-light text-center" >
+                <img th:src="@{/images/company-logo.png}" width="40" height="40"/>
+                Your Fleet Manager - Company Details
+                <img th:src="@{/images/company-logo.png}" width="40" height="40"/>
+                <form th:action="@{/logout}" method="POST" class="d-inline float-right">
+                    <button type="submit" class="btn btn-danger" style="border: 2px solid black;"> Logout <img th:src="@{/images/security/logout-icon.png}" width="22" height="22"/> </button>
+                </form>
+            </h1>
+            <hr>
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <td> name :</td>
+                            <td th:text="${company.getName()}"> name </td>
+                        </tr>
+                        <tr>
+                            <td> Telephone number :</td>
+                            <td th:text="${company.getContactDetails().getTelephoneNumber() }"> telephone number </td>
+                        </tr>
+                        <tr>
+                            <td> Email address :</td>
+                            <td th:text="${company.getContactDetails().getEmailAddress()}"> email address </td>
+                        </tr>
+                        <tr>
+                            <td> Street :</td>
+                            <td th:text="${company.getAddress().getStreet()}"> street </td>
+                        </tr>
+                        <tr>
+                            <td> House number :</td>
+                            <td th:text="${company.getAddress().getBuildingNumber()}"> building number </td>
+                        </tr>
+                        <tr>
+                            <td> City :</td>
+                            <td th:text="${company.getAddress().getCity()}"> city </td>
+                        </tr>
+                        <tr>
+                            <td> Zip Code :</td>
+                            <td th:text="${company.getAddress().getZipCode()}"> zip code </td>
+                        </tr>
+                        <tr>
+                            <td> Country :</td>
+                            <td th:text="${company.getAddress().getCountry()}"> country </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <a href="#" th:href="@{'/company/' + ${company.getId()} + '/update'}"><button type="button" class="btn btn-warning"> Edit <img th:src="@{/images/edit-icon.png}" width="22" height="22"/></button></a>
+                <a href="#" th:href="@{'/company/'}"><button type="button" class="btn btn-light"> Return To Company List <img th:src="@{/images/return-icon.png}" width="22" height="22"/> </button></a>
+                <a th:href="'mailto:'+${company.getContactDetails().getEmailAddress()}" ><button type="button" class="btn btn-success"> Send Email <img th:src="@{/images/email-logo.png}" width="22" height="22"/> </button></a>
+                <a href="#"  target="_blank"
+                   th:href="'https://www.google.com/maps/search/'+${company.getAddress().getCountry()}+
+                   '+'+${company.getAddress().getCity()}+'+'+${company.getAddress().getStreet()}+'+'+${company.getAddress().getBuildingNumber()}"
+                ><button type="button" class="btn btn-info"> Show Location <img th:src="@{/images/google-maps-logo.png}" width="22" height="22"/></button></a>
+                <a href="#"  target="_blank" th:href="'https://www.google.com/search?q='+${company.getName()}"><button type="button" class="btn btn-info"> Find More Information <img th:src="@{/images/google-search-logo.png}" width="22" height="22"/> </button></a>
+
+        </div>
+    </body>
+</html>

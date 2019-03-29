@@ -1,0 +1,19 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>404</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body class="bg-dark">
+        <div class="container-fluid">
+            <br><br>
+            <h2 class="text-center text-danger">
+                <img th:src="@{/images/404error-logo.png}" width="80" height="80"/>
+                404 - NOT FOUND
+                <img th:src="@{/images/404error-logo.png}" width="80" height="80"/>
+            </h2>
+            <hr>
+            <p class="text-center text-danger" th:text="${exceptionMessage}"> exception message </p>
+        </div>
+    </body>
+</html>

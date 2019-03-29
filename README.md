@@ -6,7 +6,7 @@ Web CRUD Application designed to manage a fleet of vehicles.
      - Spring Boot
      - Spring Data JPA
      - JPA & Hibernate
-     - Thymleaf
+     - Thymeleaf
      - JUnit
      - Mockito
      - Lombok

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Car Details</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body class="bg-dark">
+        <div class="container-fluid">
+            <h1 class="text-light text-center" >
+                <img th:src="@{/images/car-logo.png}" width="40" height="40"/>
+                Your Fleet Manager - Car Details
+                <img th:src="@{/images/car-logo.png}" width="40" height="40"/>
+                <form th:action="@{/logout}" method="POST" class="d-inline float-right">
+                    <button type="submit" class="btn btn-danger" style="border: 2px solid black;"> Logout <img th:src="@{/images/security/logout-icon.png}" width="22" height="22"/> </button>
+                </form>
+            </h1>
+            <hr>
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr >
+                        <td> Brand :</td>
+                        <td th:text="${car.getBrand()}"> brand </td>
+                    </tr>
+                    <tr>
+                        <td> Model : </td>
+                        <td th:text="${car.getModel()}"> model </td>
+                    </tr>
+                    <tr>
+                        <td> Production year : </td>
+                        <td th:text="${car.getProductionYear()}"> production year </td>
+                    </tr>
+                    <tr>
+                        <td> Registration number : </td>
+                        <td th:text="${car.getRegistrationNumber()}"> registration number </td>
+                    </tr>
+                    <tr>
+                        <td> Responder first name :</td>
+                        <td th:text="${car.getVehicleResponder().getFirstName()}"> first name </td>
+                    </tr>
+                    <tr>
+                        <td> Responder last name :</td>
+                        <td th:text="${car.getVehicleResponder().getLastName()}"> last name </td>
+                    </tr>
+                    <tr>
+                        <td> Responder telephone number :</td>
+                        <td th:text="${car.getVehicleResponder().getContactDetails().getTelephoneNumber()}"> first name </td>
+                    </tr>
+                    <tr>
+                        <td> Responder email address :</td>
+                        <td th:text="${car.getVehicleResponder().getContactDetails().getEmailAddress()}"> email address </td>
+                    </tr>
+                </thead>
+            </table>
+            <hr>
+            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${car.getDepartment().getId()} + '/car/'  +${car.getId()} + '/update'}"><button type="button" class="btn btn-warning"></buttontype> Edit <img th:src="@{/images/edit-icon.png}" width="22" height="22"/> </button></a>
+            <a href="#" th:href="@{'/company/'+${companyId}+'/department/'+${car.getDepartment().getId()}  + '/car/'}"><button type="button" class="btn btn-light"> Return To Car List <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
+            <a th:href="'mailto:'+${car.getVehicleResponder().getContactDetails().getEmailAddress()}" ><button type="button" class="btn btn-success"> Send Email To Responder <img th:src="@{/images/email-logo.png}" width="22" height="22"/> </button></a>
+            <a href="#"  target="_blank" th:href="'https://www.google.com/search?q='+${car.getBrand()}+' '+${car.getModel()}+' '+${car.getProductionYear()}"><button type="button" class="btn btn-info"> Find More Information <img th:src="@{/images/google-search-logo.png}" width="22" height="22"/> </button></a>
+
+        </div>
+    </body>
+</html>
