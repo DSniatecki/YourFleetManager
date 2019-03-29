@@ -8,14 +8,14 @@
     </head>
     <body class="bg-dark">
         <div class="container-fluid">
-
-                <h2 class="text-center text-danger">
-                    <img th:src="@{/images/error-logo.png}" width="80" height="80"/>
-                    400 - BAD REQUEST
-                    <img th:src="@{/images/error-logo.png}" width="80" height="80"/>
-                </h2>
-                <hr>
-                <p class="text-center text-danger " th:text="${exceptionMessage}"> exception message </p>
+            <br><br>
+            <h2 class="text-center text-danger">
+                <img th:src="@{/images/error-logo.png}" width="80" height="80"/>
+                400 - BAD REQUEST
+                <img th:src="@{/images/error-logo.png}" width="80" height="80"/>
+            </h2>
+            <hr>
+            <p class="text-center text-danger " th:text="${exceptionMessage}"> exception message </p>
         </div>
     </body>
 </html>

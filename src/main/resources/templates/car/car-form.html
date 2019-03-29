@@ -12,6 +12,9 @@
                 <img th:src="@{/images/car-logo.png}" width="40" height="40"/>
                 Your Fleet Manager - Car Form
                 <img th:src="@{/images/car-logo.png}" width="40" height="40"/>
+                <form th:action="@{/logout}" method="POST" class="d-inline float-right">
+                    <button type="submit" class="btn btn-danger" style="border: 2px solid black;"> Logout <img th:src="@{/images/security/logout-icon.png}" width="22" height="22"/> </button>
+                </form>
             </h1>
             <hr>
             <form th:object="${car}" th:action="@{'/company/'+${companyId}+'/department/'+${departmentId} + '/car/save'}" method="post">

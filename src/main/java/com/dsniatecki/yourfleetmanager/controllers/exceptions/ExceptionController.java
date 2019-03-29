@@ -1,4 +1,4 @@
-package com.dsniatecki.yourfleetmanager.controllers;
+package com.dsniatecki.yourfleetmanager.controllers.exceptions;
 
 
 import com.dsniatecki.yourfleetmanager.exceptions.NotFoundException;

@@ -2,7 +2,7 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Company Department List</title>
+        <title> Department List </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
@@ -10,14 +10,17 @@
         <div class="container-fluid">
             <h1 class="text-light text-center" >
                 <img th:src="@{/images/department-logo.png}" width="40" height="40"/>
-                Your Fleet Manager - Company Department List
+                Your Fleet Manager - Department List
                 <img th:src="@{/images/department-logo.png}" width="40" height="40"/>
+                <form th:action="@{/logout}" method="POST" class="d-inline float-right">
+                    <button type="submit" class="btn btn-danger" style="border: 2px solid black;"> Logout <img th:src="@{/images/security/logout-icon.png}" width="22" height="22"/> </button>
+                </form>
             </h1>
             <hr>
             <h3 class="text-warning text-center" th:text="' - ' + ${company.getName()} + ' - '" > - company name - </h3>
             <hr>
-            <a href="#" th:href="@{'/company/'+${company.getId()} + '/department/add'}"><button type="button" class="btn btn-success"> Add New Department <img th:src="@{/images/add-icon.png}" width="22" height="22"/></button></a>
-            <a href="#" th:href="@{'/company/'}"><button type="button" class="btn btn-light"> Return To Company List <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
+            <a href="#" th:href="@{'/company/'+${company.getId()} + '/department/add'}"><button type="button" class="btn btn-success" > Add New Department <img th:src="@{/images/add-icon.png}" width="22" height="22"/></button></a>
+            <a href="#" th:href="@{'/company/'}"><button type="button" class="btn btn-light" > Return To Company List <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
             <hr>
             <table class="table table-striped table-dark">
                 <thead>
