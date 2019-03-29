@@ -25,42 +25,51 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td> Name : </td>>
-                                <td> <input type="text" th:field="*{name}"/> </td>
+                                <td> Name : </td>
+                                <td><input type="text" th:field="*{name}" th:errorclass="fieldError" class="error"/>
+                                    <a class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></a></td>
                             </tr>
                             <tr>
                                 <td> Telephone number : </td>>
-                                <td> <input type="text" th:field="*{contactDetails.telephoneNumber}"/> </td>
+                                <td><input type="text" th:field="*{contactDetails.telephoneNumber}"/>
+                                    <a class="text-danger" th:if="${#fields.hasErrors('contactDetails.telephoneNumber')}" th:errors="*{contactDetails.telephoneNumber}" ></a></td>
+
                             </tr>
                             <tr>
                                 <td> Email address: </td>>
-                                <td> <input type="text" th:field="*{contactDetails.emailAddress}"/> </td>
+                                <td><input type="text" th:field="*{contactDetails.emailAddress}"/>
+                                    <a class="text-danger" th:if="${#fields.hasErrors('contactDetails.emailAddress')}" th:errors="*{contactDetails.emailAddress}" ></a></td>
                             </tr>
                             <tr>
                                 <td> Street : </td>>
-                                <td> <input type="text" th:field="*{address.street}"/> </td>
+                                <td><input type="text" th:field="*{address.street}"/>
+                                     <a class="text-danger" th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}" ></a></td>
                             </tr>
                             <tr>
                                 <td> Building number : </td>>
-                                <td> <input type="text" th:field="*{address.buildingNumber}"/> </td>
+                                <td><input type="text" th:field="*{address.buildingNumber}"/>
+                                    <a class="text-danger" th:if="${#fields.hasErrors('address.buildingNumber')}" th:errors="*{address.buildingNumber}" ></a></td>
                             </tr>
                             <tr>
                                 <td> City : </td>>
-                                <td>  <input type="text" th:field="*{address.city}"/> </td>
+                                <td><input type="text" th:field="*{address.city}"/>
+                                    <a class="text-danger" th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}" ></a></td>
                             </tr>
                             <tr>
                                 <td> Zip Code : </td>>
-                                <td>  <input type="text" th:field="*{address.zipCode}"/> </td>
+                                <td>  <input type="text" th:field="*{address.zipCode}"/>
+                                    <a class="text-danger" th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}" ></a></td>
                             </tr>
                             <tr>
                                 <td> Country : </td>>
-                                <td>  <input type="text" th:field="*{address.country}"/> </td>
+                                <td>  <input type="text" th:field="*{address.country}"/>
+                                    <a class="text-danger" th:if="${#fields.hasErrors('address.country')}" th:errors="*{address.country}" ></a></td>
                             </tr>
                         </tbody>
                     </table>
                 <hr>
-                    <button type="submit" class="btn btn-success" > Submit </button>
-                <a href="#" th:href="@{'/company/'}"><button type="button" class="btn btn-light"> Return </button></a>
+                    <button type="submit" class="btn btn-success" > Submit <img th:src="@{/images/submit-icon.png}" width="22" height="22"/></button>
+                <a href="#" th:href="@{'/company/'}"><button type="button" class="btn btn-light"> Return <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
             </form>
         </div>
     </body>

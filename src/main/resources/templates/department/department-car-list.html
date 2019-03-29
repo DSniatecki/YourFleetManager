@@ -17,8 +17,8 @@
             <hr>
             <h3 class="text-info text-center" th:text="' - ' + ${department.getName()} + ' - '" > - department name - </h3>
             <hr>
-            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/car/add'}"><button type="button" class="btn btn-success"> Add New Car </button></a>
-            <a href="#" th:href="@{'/company/'+${companyId} + '/department'}"><button type="button" class="btn btn-light"> Return to Department List </button></a>
+            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/car/add'}"><button type="button" class="btn btn-success"> Add New Car <img th:src="@{/images/add-icon.png}" width="22" height="22"/></button></a>
+            <a href="#" th:href="@{'/company/'+${companyId} + '/department'}"><button type="button" class="btn btn-light"> Return to Department List <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
             <hr>
 
             <table class="table table-striped table-dark">
@@ -45,10 +45,9 @@
                         <td th:text="${car.getRegistrationNumber()}"> registration number </td>
 
                         <td>
-                            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/car/' + ${car.getId()} + '/details'}"><button type="button" class="btn btn-info"> Show Details </button></a>
-
+                            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/car/' + ${car.getId()} + '/details'}"><button type="button" class="btn btn-info"> Details <img th:src="@{/images/details-icon.png}" width="22" height="22"/></button></a>
                             <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/car/' + ${car.getId()} + '/delete'}"
-                               th:onclick="return confirm('Are you sure you want to delete this department')?true:false;"><button type="button" class="btn btn-danger"> Delete </button></a>
+                               th:onclick="return confirm('Are you sure you want to delete this department')?true:false;"><button type="button" class="btn btn-danger"> Delete <img th:src="@{/images/delete-icon.png}" width="22" height="22"/></button></a>
                         </td>
                     </tr>
                 </tbody>

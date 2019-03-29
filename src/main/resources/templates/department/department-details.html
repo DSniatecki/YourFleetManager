@@ -31,8 +31,8 @@
                 </tbody>
             </table>
             <hr>
-            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/update'}"><button type="button" class="btn btn-warning"> Edit </button></a>
-            <a href="#" th:href="@{'/company/'+${companyId}+'/department'}"><button type="button" class="btn btn-light"> Return To Department List </button></a>
+            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${department.getId()} + '/update'}"><button type="button" class="btn btn-warning"> Edit <img th:src="@{/images/edit-icon.png}" width="22" height="22"/></button></a>
+            <a href="#" th:href="@{'/company/'+${companyId}+'/department'}"><button type="button" class="btn btn-light"> Return To Department List <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
         </div>
     </body>
 </html>

@@ -8,8 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -85,7 +87,10 @@ class CompanyController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute CompanyDTO companyDTO, Model model){
+    public String save(@Valid @ModelAttribute("company") CompanyDTO companyDTO, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            return "company/company-form";
+        }
         model.addAttribute("company", companyService.save(companyDTO));
         return "company/company-details";
     }

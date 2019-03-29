@@ -3,7 +3,10 @@ package com.dsniatecki.yourfleetmanager.controllers;
 import com.dsniatecki.yourfleetmanager.dto.DepartmentDTO;
 import com.dsniatecki.yourfleetmanager.services.DepartmentService;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @ControllerAdvice
 @RequestMapping("/company/{companyId}/department")
@@ -30,7 +33,12 @@ class DepartmentController {
     }
 
     @PostMapping("/save")
-    public String save(@PathVariable String companyId, @ModelAttribute DepartmentDTO departmentDTO, Model model){
+    public String save(@PathVariable String companyId, @Valid  @ModelAttribute("department") DepartmentDTO departmentDTO,
+                       BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            return "department/department-form";
+        }
+
         model.addAttribute("department", departmentService.save(departmentDTO, Long.valueOf(companyId)));
         model.addAttribute("companyId", Long.valueOf(companyId));
         return "department/department-details";

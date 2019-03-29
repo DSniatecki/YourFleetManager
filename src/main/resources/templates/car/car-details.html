@@ -51,8 +51,11 @@
                 </thead>
             </table>
             <hr>
-            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${car.getDepartment().getId()} + '/car/' +${car.getId()} + '/update'}"><button type="button" class="btn btn-warning"></buttontype> Edit </button></a>
-            <a href="#" th:href="@{'/company/'+${companyId}+'/department/'+${car.getDepartment().getId()} + '/car/'}"><button type="button" class="btn btn-light"> Return To Car List </button></a>
+            <a href="#" th:href="@{'/company/'+${companyId} + '/department/'+${car.getDepartment().getId()} + '/car/'  +${car.getId()} + '/update'}"><button type="button" class="btn btn-warning"></buttontype> Edit <img th:src="@{/images/edit-icon.png}" width="22" height="22"/> </button></a>
+            <a href="#" th:href="@{'/company/'+${companyId}+'/department/'+${car.getDepartment().getId()}  + '/car/'}"><button type="button" class="btn btn-light"> Return To Car List <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
+            <a th:href="'mailto:'+${car.getVehicleResponder().getContactDetails().getEmailAddress()}" ><button type="button" class="btn btn-success"> Send Email To Responder <img th:src="@{/images/email-logo.png}" width="22" height="22"/> </button></a>
+            <a href="#"  target="_blank" th:href="'https://www.google.com/search?q='+${car.getBrand()}+' '+${car.getModel()}+' '+${car.getProductionYear()}"><button type="button" class="btn btn-info"> Find More Information <img th:src="@{/images/google-search-logo.png}" width="22" height="22"/> </button></a>
+
         </div>
     </body>
 </html>

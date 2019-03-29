@@ -51,8 +51,15 @@
                     </tbody>
                 </table>
                 <hr>
-                <a href="#" th:href="@{'/company/' + ${company.getId()} + '/update'}"><button type="button" class="btn btn-warning"> Edit </button></a>
-                <a href="#" th:href="@{'/company/'}"><button type="button" class="btn btn-light"> Return To Company List </button></a>
+                <a href="#" th:href="@{'/company/' + ${company.getId()} + '/update'}"><button type="button" class="btn btn-warning"> Edit <img th:src="@{/images/edit-icon.png}" width="22" height="22"/></button></a>
+                <a href="#" th:href="@{'/company/'}"><button type="button" class="btn btn-light"> Return To Company List <img th:src="@{/images/return-icon.png}" width="22" height="22"/> </button></a>
+                <a th:href="'mailto:'+${company.getContactDetails().getEmailAddress()}" ><button type="button" class="btn btn-success"> Send Email <img th:src="@{/images/email-logo.png}" width="22" height="22"/> </button></a>
+                <a href="#"  target="_blank"
+                   th:href="'https://www.google.com/maps/search/'+${company.getAddress().getCountry()}+
+                   '+'+${company.getAddress().getCity()}+'+'+${company.getAddress().getStreet()}+'+'+${company.getAddress().getBuildingNumber()}"
+                ><button type="button" class="btn btn-info"> Show Location <img th:src="@{/images/google-maps-logo.png}" width="22" height="22"/></button></a>
+                <a href="#"  target="_blank" th:href="'https://www.google.com/search?q='+${company.getName()}"><button type="button" class="btn btn-info"> Find More Information <img th:src="@{/images/google-search-logo.png}" width="22" height="22"/> </button></a>
+
         </div>
     </body>
 </html>

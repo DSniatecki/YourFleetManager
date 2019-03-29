@@ -26,19 +26,23 @@
                     <tbody>
                         <tr>
                             <td> Brand </td>>
-                            <td> <input type="text" th:field="*{brand}"/> </td>
+                            <td> <input type="text" th:field="*{brand}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" ></a></td>
                         </tr>
                         <tr>
                             <td> Model </td>>
-                            <td> <input type="text" th:field="*{model}"/> </td>
+                            <td> <input type="text" th:field="*{model}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('model')}" th:errors="*{model}" ></a></td>
                         </tr>
                         <tr>
                             <td> Production year </td>>
-                            <td> <input type="text" th:field="*{productionYear}"/> </td>
+                            <td> <input type="text" th:field="*{productionYear}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('productionYear')}" th:errors="*{productionYear}" ></a></td>
                         </tr>
                         <tr>
                             <td> Registration number </td>
-                            <td> <input type="text" th:field="*{registrationNumber}"/> </td>
+                            <td> <input type="text" th:field="*{registrationNumber}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('registrationNumber')}" th:errors="*{registrationNumber}" ></a></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -51,27 +55,31 @@
 
                         <tr>
                             <td> Responder first name </td>>
-                            <td> <input type="text" th:field="*{vehicleResponder.firstName}"/> </td>
+                            <td> <input type="text" th:field="*{vehicleResponder.firstName}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('vehicleResponder.firstName')}" th:errors="*{vehicleResponder.firstName}" ></a></td>
                         </tr>
                         <tr>
                             <td> Responder last name </td>>
-                            <td>  <input type="text" th:field="*{vehicleResponder.lastName}"/> </td>
+                            <td>  <input type="text" th:field="*{vehicleResponder.lastName}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('vehicleResponder.lastName')}" th:errors="*{vehicleResponder.lastName}" ></a></td>
                         </tr>
                         <tr>
                             <td> Responder telephone number </td>>
-                            <td> <input type="text" th:field="*{vehicleResponder.contactDetails.telephoneNumber}"/> </td>
+                            <td> <input type="text" th:field="*{vehicleResponder.contactDetails.telephoneNumber}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('vehicleResponder.contactDetails.telephoneNumber')}" th:errors="*{vehicleResponder.contactDetails.telephoneNumber}" ></a></td>
                         </tr>
                         <tr>
                             <td> Responder email addres  </td>>
-                            <td>  <input type="text" th:field="*{vehicleResponder.contactDetails.emailAddress}"/> </td>
+                            <td>  <input type="text" th:field="*{vehicleResponder.contactDetails.emailAddress}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('vehicleResponder.contactDetails.emailAddress')}" th:errors="*{vehicleResponder.contactDetails.emailAddress}" ></a></td>
                         </tr>
                     </tbody>
                 </table>
 
 
                 <hr>
-                <button type="submit" class="btn btn-success"> Submit </button>
-                <a href="#" th:href="@{'/company/'+${companyId}+'/department/'+${departmentId}+'/car'}"><button type="button" class="btn btn-light"> Return </button></a>
+                <button type="submit" class="btn btn-success"> Submit <img th:src="@{/images/submit-icon.png}" width="22" height="22"/></button>
+                <a href="#" th:href="@{'/company/'+${companyId}+'/department/'+${departmentId}+'/car'}"><button type="button" class="btn btn-light"> Return <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
             </form>
         </div>
     </body>

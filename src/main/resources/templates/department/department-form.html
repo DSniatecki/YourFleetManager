@@ -25,22 +25,25 @@
                     <tbody>
                         <tr>
                             <td> Name : </td>>
-                            <td> <input type="text" th:field="*{name}"/> </td>
+                            <td> <input type="text" th:field="*{name}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></a></td>
                         </tr>
                         <tr>
                             <td> Telephone number : </td>>
-                            <td> <input type="text" th:field="*{contactDetails.telephoneNumber}"/> </td>
+                            <td> <input type="text" th:field="*{contactDetails.telephoneNumber}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('contactDetails.telephoneNumber')}" th:errors="*{contactDetails.telephoneNumber}" ></a></td>
                         </tr>
                         <tr>
                             <td> Email address: </td>>
-                            <td> <input type="text" th:field="*{contactDetails.emailAddress}"/> </td>
+                            <td> <input type="text" th:field="*{contactDetails.emailAddress}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('contactDetails.emailAddress')}" th:errors="*{contactDetails.emailAddress}" ></a></td>
                         </tr>
 
                     </tbody>
                 </table>
                 <hr>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                <a href="#" th:href="@{'/company/'+${companyId}+'/department/'}"><button type="button" class="btn btn-light"> Return </button></a>
+                    <button type="submit" class="btn btn-success"> Submit <img th:src="@{/images/submit-icon.png}" width="22" height="22"/></button>
+                <a href="#" th:href="@{'/company/'+${companyId}+'/department/'}"><button type="button" class="btn btn-light"> Return <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
             </form>
         </div>
     </body>

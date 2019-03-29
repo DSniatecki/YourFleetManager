@@ -4,7 +4,10 @@ import com.dsniatecki.yourfleetmanager.dto.CarDTO;
 import com.dsniatecki.yourfleetmanager.services.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/company/{companyId}/department/{departmentId}/car")
@@ -47,7 +50,11 @@ class CarController {
 
     @PostMapping("/save")
     public String save(@PathVariable String companyId, @PathVariable String departmentId,
-                       @ModelAttribute CarDTO carDTO, Model model){
+                       @Valid @ModelAttribute("car") CarDTO carDTO, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            return "car/car-form";
+        }
+
         model.addAttribute("car", carService.saveWithDepartment(carDTO, Long.valueOf(departmentId)));
         model.addAttribute("companyId", Long.valueOf(companyId));
         return "car/car-details";
