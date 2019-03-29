@@ -1,18 +1,21 @@
 package com.dsniatecki.yourfleetmanager.controllers;
 
 
-import com.dsniatecki.yourfleetmanager.domains.Company;
-import com.dsniatecki.yourfleetmanager.exceptions.NotFoundException;
+import com.dsniatecki.yourfleetmanager.dto.CompanyDTO;
 import com.dsniatecki.yourfleetmanager.services.CompanyService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
@@ -22,12 +25,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class CompanyControllerTest {
 
-    CompanyController companyController;
+    private CompanyController companyController;
 
     @Mock
     CompanyService companyService;
 
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Before
     public void setUp() throws Exception{
@@ -37,10 +40,48 @@ public class CompanyControllerTest {
     }
 
     @Test
-    public void testShowAll() throws Exception{
-        when(companyService.getAll()).thenReturn(new ArrayList<Company>());
+    public void testShowListWithPagination() throws Exception{
+        List<CompanyDTO> companyDTOs = new ArrayList<>();
+        Page expectedPage = new PageImpl(companyDTOs);
 
-        mockMvc.perform(get("/company/"))
+        when(companyService.getAllPageable(any(Pageable.class))).thenReturn(expectedPage);
+
+        mockMvc.perform(get("/company/")
+
+        )
+                .andExpect( status().isOk())
+                .andExpect( model().attributeExists("companiesPage"))
+                .andExpect( view().name("company/company-list-page") );
+
+        verify(companyService, times(1)).getAllPageable(any());
+
+    }
+
+    @Test
+    public void testShowListWithPaginationSecond() throws Exception{
+        List<CompanyDTO> companyDTOs = new ArrayList<>();
+        Page expectedPage = new PageImpl(companyDTOs);
+
+        when(companyService.getAllPageable(any(Pageable.class))).thenReturn(expectedPage);
+
+        mockMvc.perform(get("/company/?page=2")
+
+        )
+                .andExpect( status().isOk())
+                .andExpect( model().attributeExists("companiesPage"))
+                .andExpect( model().attributeExists("prevCompaniesNumber"))
+                .andExpect( model().attributeExists("pageNumbers"))
+                .andExpect( view().name("company/company-list-page") );
+
+        verify(companyService, times(1)).getAllPageable(any());
+
+    }
+
+    @Test
+    public void testShowAll() throws Exception{
+        when(companyService.getAll()).thenReturn(new ArrayList<CompanyDTO>());
+
+        mockMvc.perform(get("/company/all"))
                 .andExpect( status().isOk())
                 .andExpect( model().attributeExists("companies"))
                 .andExpect( view().name("company/company-list") );
@@ -48,6 +89,7 @@ public class CompanyControllerTest {
         verify(companyService, times(1)).getAll();
 
     }
+
 
     @Test
     public void testAddNew() throws Exception{
@@ -60,10 +102,10 @@ public class CompanyControllerTest {
     @Test
     public void testShowDetails() throws Exception{
 
-        Company company = new Company();
-        company.setId(1L);
+        CompanyDTO companyDTO = new CompanyDTO();
+        companyDTO.setId(1L);
 
-        when(companyService.getById(anyLong())).thenReturn(company);
+        when(companyService.getById(anyLong())).thenReturn(companyDTO);
 
         mockMvc.perform(get("/company/{id}/details", 1L))
                 .andExpect( status().isOk())
@@ -77,10 +119,10 @@ public class CompanyControllerTest {
     @Test
     public void testUpdate() throws Exception{
 
-        Company company = new Company();
-        company.setId(1L);
+        CompanyDTO companyDTO = new CompanyDTO();
+        companyDTO.setId(1L);
 
-        when(companyService.getById(anyLong())).thenReturn(company);
+        when(companyService.getById(anyLong())).thenReturn(companyDTO);
 
         mockMvc.perform(get("/company/{id}/update", 1L))
                 .andExpect( status().isOk())
@@ -100,9 +142,9 @@ public class CompanyControllerTest {
     @Test
     public void testSave() throws Exception{
 
-        Company company = new Company();
-        company.setId(1L);
-        when(companyService.save(any())).thenReturn(company);
+        CompanyDTO companyDTO = new CompanyDTO();
+        companyDTO.setId(1L);
+        when(companyService.save(any())).thenReturn(companyDTO);
 
         mockMvc.perform(post("/company/save")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)

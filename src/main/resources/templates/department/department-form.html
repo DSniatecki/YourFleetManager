@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Department Form</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body class="bg-dark">
+        <div class="container-fluid">
+            <h1 class="text-light text-center" >
+                <img th:src="@{/images/department-logo.png}" width="40" height="40"/>
+                Your Fleet Manager - Department Form
+                <img th:src="@{/images/department-logo.png}" width="40" height="40"/>
+                <form th:action="@{/logout}" method="POST" class="d-inline float-right">
+                    <button type="submit" class="btn btn-danger" style="border: 2px solid black;"> Logout <img th:src="@{/images/security/logout-icon.png}" width="22" height="22"/> </button>
+                </form>
+            </h1>
+            <hr>
+            <form th:object="${department}" th:action="@{'/company/'+${companyId}+'/department/save'}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <input type="hidden" th:field="*{contactDetails.id}"/>
+
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <th> Department Details :</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Name : </td>>
+                            <td> <input type="text" th:field="*{name}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></a></td>
+                        </tr>
+                        <tr>
+                            <td> Telephone number : </td>>
+                            <td> <input type="text" th:field="*{contactDetails.telephoneNumber}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('contactDetails.telephoneNumber')}" th:errors="*{contactDetails.telephoneNumber}" ></a></td>
+                        </tr>
+                        <tr>
+                            <td> Email address: </td>>
+                            <td> <input type="text" th:field="*{contactDetails.emailAddress}"/>
+                                <a class="text-danger" th:if="${#fields.hasErrors('contactDetails.emailAddress')}" th:errors="*{contactDetails.emailAddress}" ></a></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <hr>
+                    <button type="submit" class="btn btn-success"> Submit <img th:src="@{/images/submit-icon.png}" width="22" height="22"/></button>
+                <a href="#" th:href="@{'/company/'+${companyId}+'/department/'}"><button type="button" class="btn btn-light"> Return <img th:src="@{/images/return-icon.png}" width="22" height="22"/></button></a>
+            </form>
+        </div>
+    </body>
+</html>

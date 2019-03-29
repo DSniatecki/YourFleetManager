@@ -26,11 +26,8 @@ public class VehicleResponder {
     @JoinColumn(name="contact_details_id")
     private ContactDetails contactDetails;
 
-    public VehicleResponder() { }
-
-    public VehicleResponder(String firstName, String lastName, ContactDetails contactDetails) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.contactDetails = contactDetails;
+    public VehicleResponder() {
+        this.contactDetails = new ContactDetails();
     }
+
 }
