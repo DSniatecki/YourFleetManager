@@ -68,6 +68,9 @@ public class DepartmentControllerTest {
         mockMvc.perform(post("/company/{companyId}/department/save", 1L)
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("id", "1")
+                .param("name", "FunnyCompany")
+                .param("contactDetails.telephoneNumber", "785-435-234")
+                .param("contactDetails.emailAddress", "superemail@gmail.com")
         )
                 .andExpect( status().isOk())
                 .andExpect( view().name("department/department-details") );
