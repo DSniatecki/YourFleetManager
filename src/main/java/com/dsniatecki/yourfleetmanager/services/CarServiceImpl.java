@@ -1,7 +1,7 @@
 package com.dsniatecki.yourfleetmanager.services;
 
-import com.dsniatecki.yourfleetmanager.domains.Car;
-import com.dsniatecki.yourfleetmanager.domains.Department;
+import com.dsniatecki.yourfleetmanager.entities.Car;
+import com.dsniatecki.yourfleetmanager.entities.Department;
 import com.dsniatecki.yourfleetmanager.dto.CarDTO;
 import com.dsniatecki.yourfleetmanager.exceptions.NotFoundException;
 import com.dsniatecki.yourfleetmanager.repositories.CarRepository;

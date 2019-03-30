@@ -1,4 +1,4 @@
-package com.dsniatecki.yourfleetmanager.domains;
+package com.dsniatecki.yourfleetmanager.entities;
 
 
 import lombok.Getter;

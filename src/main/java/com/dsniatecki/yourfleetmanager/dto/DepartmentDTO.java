@@ -1,7 +1,7 @@
 package com.dsniatecki.yourfleetmanager.dto;
 
-import com.dsniatecki.yourfleetmanager.domains.Car;
-import com.dsniatecki.yourfleetmanager.domains.Company;
+import com.dsniatecki.yourfleetmanager.entities.Car;
+import com.dsniatecki.yourfleetmanager.entities.Company;
 import com.dsniatecki.yourfleetmanager.validators.ValidString;
 import lombok.Getter;
 import lombok.Setter;

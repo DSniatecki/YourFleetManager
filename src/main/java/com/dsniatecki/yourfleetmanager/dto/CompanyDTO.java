@@ -1,13 +1,11 @@
 package com.dsniatecki.yourfleetmanager.dto;
 
-import com.dsniatecki.yourfleetmanager.domains.Department;
+import com.dsniatecki.yourfleetmanager.entities.Department;
 import com.dsniatecki.yourfleetmanager.validators.ValidString;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @Getter

@@ -1,12 +1,13 @@
 package com.dsniatecki.yourfleetmanager.services;
 
-import com.dsniatecki.yourfleetmanager.domains.Company;
+import com.dsniatecki.yourfleetmanager.entities.Company;
 import com.dsniatecki.yourfleetmanager.dto.CompanyDTO;
 import com.dsniatecki.yourfleetmanager.exceptions.NotFoundException;
 import com.dsniatecki.yourfleetmanager.repositories.CompanyRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
