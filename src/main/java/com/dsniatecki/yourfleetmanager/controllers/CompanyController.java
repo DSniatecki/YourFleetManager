@@ -30,24 +30,12 @@ class CompanyController {
         PAGE_SIZE = 5;
     }
 
-    @GetMapping({"/","/list"})
-    public String showListWithPagination(@RequestParam("page") Optional<Integer> page, Model model ){
-
+    @GetMapping("/")
+    public String showPage(@RequestParam("page") Optional<Integer> page, Model model ){
         int currentPage = page.orElse(1);
         Page<CompanyDTO> companyPage = companyService.getAllPageable(PageRequest.of(currentPage - 1, PAGE_SIZE));
-        int totalPages = companyPage.getTotalPages();
         model.addAttribute("companiesPage", companyPage);
-
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = new ArrayList<>();
-            for(int i=1; i<=totalPages; i++){
-                pageNumbers.add(i);
-            }
-            model.addAttribute("prevCompaniesNumber", (currentPage-1)*PAGE_SIZE );
-            model.addAttribute("pageNumbers", pageNumbers);
-        }
-        model.addAttribute("companiesPage");
-        model.addAttribute("companiesPage", companyPage);
+        model.addAttribute("prevCompaniesNumber", (currentPage-1)*PAGE_SIZE );
         return "company/company-list-page";
     }
 

@@ -52,10 +52,10 @@
             </table>
             <hr>
             <span style="display: inline;">
-             <p class="text-light" >    Select Page :
-                <span  style="display: inline;" th:each="pageNumber : ${pageNumbers}">
-                    <a  href="#" th:href="@{/company/(page=${pageNumber})}" th:class="${pageNumber==companiesPage.number + 1} ? active" ><button  type="button" class="btn btn-light"><a th:text="${pageNumber}"></a><img th:src="@{/images/page-icon.png}" width="22" height="22"/></button></a>
-                </span>
+            <p class="text-light" >    Select Page :
+                <th:block th:each="i: ${#numbers.sequence(1, companiesPage.getTotalPages())}">
+                    <a  href="#" th:href="@{/company/(page=${i})}" ><button  type="button" class="btn btn-light" th:text="${i}" ></button></a>
+                </th:block>
             </p>
             </span>
         </div>
