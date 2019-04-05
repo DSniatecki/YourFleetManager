@@ -51,12 +51,12 @@
                 </tbody>
             </table>
             <hr>
-            <span style="display: inline;">
-            <p class="text-light" >    Select Page :
-                <th:block th:each="i: ${#numbers.sequence(1, companiesPage.getTotalPages())}">
-                    <a  href="#" th:href="@{/company/(page=${i})}" ><button  type="button" class="btn btn-light" th:text="${i}" ></button></a>
-                </th:block>
-            </p>
+            <span style="display: inline;" th:if="${companiesPage.getTotalPages()>0}">
+                <p class="text-light" >    Select Page :
+                    <th:block th:each="i: ${#numbers.sequence(1, companiesPage.getTotalPages())}">
+                        <a  href="#" th:href="@{/company/(page=${i})}" ><button  type="button" class="btn btn-light" th:text="${i}" ></button></a>
+                    </th:block>
+                </p>
             </span>
         </div>
     </body>
