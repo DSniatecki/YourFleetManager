@@ -34,6 +34,9 @@ Web CRUD Application designed to manage a fleet of vehicles.
   8.  Run Application 
   9.  log in with username: "user" password: "user" on website "http://localhost:8000/" 
   10. Enjoy the management of your fleet of vehicles :)
+  # Database diagram :
+  
+  ![](SQL/Database-Diagram-Screenshot.jpg)
  
  # Screenshots :
   
