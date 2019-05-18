@@ -1,5 +1,8 @@
 ### YourFleetManager
-Web CRUD Application designed to manage a fleet of vehicles.
+Web Application designed to manage a fleet of vehicles.
+
+The second version of this project created in REST architecture: 
+ - https://github.com/DSniatecki/YourFleetManager-REST
 
 ## technology used :
  # - Backend :
