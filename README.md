@@ -1,31 +1,32 @@
-### YourFleetManager
+# YourFleetManager
 Web Application designed to manage a fleet of vehicles.
 
 The second version of this project created in REST architecture: 
  - https://github.com/DSniatecki/YourFleetManager-REST
 
 ## technology used :
- # - Backend :
+ ### - Backend :
      - Spring Boot
+     - Spring MVC
      - Spring Data JPA
      - JPA & Hibernate
      - Thymeleaf
      - Lombok
      
- # - Tests : 
+ ### - Tests : 
      - JUnit
      - Mockito
      
- # - Frontend : 
+ ### - Frontend : 
      - HTML
      - Boostrap CSS
      
- # - Databases : 
+ ### - Databases : 
      - H2 [ embedded ]
      - MySQL
      - PostgreSQl
 
- # Launching instruction :
+ ## Launching instruction :
 
   1.  Download 
   2.  Unzip 
@@ -39,7 +40,8 @@ The second version of this project created in REST architecture:
   8.  Run Application 
   9.  log in with username: "user" password: "user" on website "http://localhost:8000/" 
   10. Enjoy the management of your fleet of vehicles :)
-  # Database diagram :
+  
+  ## Database diagram :
   
   ![](SQL/Database-Diagram-Screenshot.jpg)
  
