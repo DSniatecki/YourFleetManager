@@ -4,7 +4,7 @@ Web Application designed to manage a fleet of vehicles.
 The second version of this project created in REST architecture: 
  - https://github.com/DSniatecki/YourFleetManager-REST
  
- *08.2019 I am really not proud of the code quality code and test coverage :)
+ *08.2019 I am really not proud of the code quality and test coverage :)
 
 ## technology used :
  ### - Backend :
